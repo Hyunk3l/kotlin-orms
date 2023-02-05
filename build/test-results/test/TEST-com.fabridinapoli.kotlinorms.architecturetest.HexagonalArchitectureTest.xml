@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.fabridinapoli.kotlinorms.architecturetest.HexagonalArchitectureTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-02-05T14:35:03" hostname="MacBook-Air.local" time="0.175">
-  <properties/>
-  <testcase name="application services should not depend on infrastructure()" classname="com.fabridinapoli.kotlinorms.architecturetest.HexagonalArchitectureTest" time="0.025"/>
-  <testcase name="domain should depend on domain only()" classname="com.fabridinapoli.kotlinorms.architecturetest.HexagonalArchitectureTest" time="0.003"/>
-  <system-out><![CDATA[2023-02-05T15:35:02.564+01:00  INFO 49438 --- [    Test worker] com.tngtech.archunit.core.PluginLoader   : Detected Java version 17.0.4
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
