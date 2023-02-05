@@ -1,11 +1,26 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jooq.meta.jaxb.*
+import org.jooq.codegen.GenerationTool
+import org.jooq.meta.jaxb.Target
 
 plugins {
+    id("java")
+    id("java-library")
     id("org.springframework.boot") version "3.0.2"
     id("io.spring.dependency-management") version "1.1.0"
     id("io.gitlab.arturbosch.detekt") version "1.22.0"
     kotlin("jvm") version "1.8.10"
     kotlin("plugin.spring") version "1.8.10"
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.jooq:jooq-codegen:3.16.6")
+        classpath("org.postgresql:postgresql:42.3.5")
+    }
 }
 
 group = "{{ group_name }}"
@@ -29,6 +44,7 @@ dependencies {
     implementation("org.postgresql:postgresql:42.5.2")
     implementation("org.flywaydb:flyway-core:9.14.1")
     implementation(platform("org.apache.logging.log4j:log4j-bom:2.19.0"))
+    implementation("org.springframework.boot:spring-boot-starter-jooq")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "mockito-core")
@@ -85,4 +101,31 @@ tasks {
         }
         shouldRunAfter(test)
     }
+}
+
+// Set the following system properties to enable JOOQ to connect to the DB
+// -Djooq.codegen.jdbc.user
+// -Djooq.codegen.jdbc.password
+//
+tasks.create("generate") {
+    GenerationTool.generate(
+        Configuration()
+            .withJdbc(
+                Jdbc()
+                    .withDriver("org.postgresql.Driver")
+                    .withUrl("jdbc:postgresql://localhost:5432/somedatabasename")
+                    .withUser("postgres")
+                    .withPassword("postgres")
+            )
+            .withGenerator(
+                Generator()
+                    .withDatabase(Database().withInputSchema("public"))
+                    .withGenerate(Generate())
+                    .withTarget(
+                        Target()
+                            .withPackageName("com.fabridinapoli.kotlinorms")
+                            .withDirectory("${projectDir}/src/main/java/generated/jooq")
+                    )
+            )
+    )
 }
