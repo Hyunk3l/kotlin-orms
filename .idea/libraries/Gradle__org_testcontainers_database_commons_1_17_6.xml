@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.testcontainers:database-commons:1.17.6">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testcontainers/database-commons/1.17.6/8a4cd2cda51c2cc3092b1c22f4ee8148be4db410/database-commons-1.17.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.testcontainers/database-commons/1.17.6/e472b49b250f166d721033d2cdf24d942d1fce7c/database-commons-1.17.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
