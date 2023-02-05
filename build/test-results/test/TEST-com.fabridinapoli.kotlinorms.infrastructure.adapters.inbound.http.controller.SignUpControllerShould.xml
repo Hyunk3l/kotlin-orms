@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.fabridinapoli.kotlinorms.infrastructure.adapters.inbound.http.controller.SignUpControllerShould" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-02-05T14:35:03" hostname="MacBook-Air.local" time="0.105">
+  <properties/>
+  <testcase name="return a 500 if any error in the use case()" classname="com.fabridinapoli.kotlinorms.infrastructure.adapters.inbound.http.controller.SignUpControllerShould" time="0.094"/>
+  <testcase name="sign up a customer()" classname="com.fabridinapoli.kotlinorms.infrastructure.adapters.inbound.http.controller.SignUpControllerShould" time="0.011"/>
+  <system-out><![CDATA[2023-02-05T15:35:03.388+01:00  INFO 49438 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.fabridinapoli.kotlinorms.infrastructure.adapters.inbound.http.controller.SignUpControllerShould]: SignUpControllerShould does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2023-02-05T15:35:03.407+01:00  INFO 49438 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.fabridinapoli.kotlinorms.Application for test class com.fabridinapoli.kotlinorms.infrastructure.adapters.inbound.http.controller.SignUpControllerShould
+2023-02-05T15:35:03.435+01:00  INFO 49438 --- [    Test worker] c.f.k.i.a.i.h.c.SignUpControllerShould   : Starting SignUpControllerShould using Java 17.0.4 with PID 49438 (started by fabri in /Users/fabri/personal/kotlin-orms)
+2023-02-05T15:35:03.435+01:00  INFO 49438 --- [    Test worker] c.f.k.i.a.i.h.c.SignUpControllerShould   : The following 1 profile is active: "dev"
+2023-02-05T15:35:03.537+01:00  INFO 49438 --- [    Test worker] c.f.k.i.a.i.h.c.SignUpControllerShould   : Started SignUpControllerShould in 0.125 seconds (process running for 79.211)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.fabridinapoli.kotlinorms.domain.model.CustomerShould" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-02-05T14:35:03" hostname="MacBook-Air.local" time="0.001">
+  <properties/>
+  <testcase name="cannot create a customer when surname is empty()" classname="com.fabridinapoli.kotlinorms.domain.model.CustomerShould" time="0.0"/>
+  <testcase name="cannot create a customer when name is empty()" classname="com.fabridinapoli.kotlinorms.domain.model.CustomerShould" time="0.0"/>
+  <testcase name="cannot create a customer when email is empty()" classname="com.fabridinapoli.kotlinorms.domain.model.CustomerShould" time="0.0"/>
+  <testcase name="create a customer when all the data is valid()" classname="com.fabridinapoli.kotlinorms.domain.model.CustomerShould" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
