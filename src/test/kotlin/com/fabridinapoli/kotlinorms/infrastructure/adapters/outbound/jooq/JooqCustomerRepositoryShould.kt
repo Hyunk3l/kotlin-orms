@@ -19,7 +19,6 @@ import org.jooq.impl.DefaultDSLContext
 import org.jooq.impl.DefaultExecuteListenerProvider
 import org.jooq.tools.LoggerListener
 import org.junit.jupiter.api.Test
-import org.springframework.context.annotation.Bean
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.queryForObject
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy
@@ -36,7 +35,8 @@ class JooqCustomerRepositoryShould {
 
     @Test
     fun `save a customer into the db`() {
-        val connectionProvider = DataSourceConnectionProvider(TransactionAwareDataSourceProxy(databaseContainer.dataSource))
+        val connectionProvider = DataSourceConnectionProvider(
+            TransactionAwareDataSourceProxy(databaseContainer.dataSource))
         val config = DefaultConfiguration().also {
             it.set(connectionProvider)
             it.set(SQLDialect.POSTGRES)
