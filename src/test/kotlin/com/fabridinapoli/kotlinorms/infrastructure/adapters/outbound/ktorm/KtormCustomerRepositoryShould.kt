@@ -15,6 +15,7 @@ import java.time.temporal.ChronoUnit
 import java.util.UUID
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
+import org.ktorm.database.Database
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.queryForObject
 
@@ -36,8 +37,14 @@ class KtormCustomerRepositoryShould {
             FullName("Fabrizio Di Napoli"),
             Email("some.email@example.org")
         )
+        val database = Database.connect(
+            url = databaseContainer.dataSource.jdbcUrl,
+            driver = databaseContainer.dataSource.driverClassName,
+            user = databaseContainer.dataSource.username,
+            password = databaseContainer.dataSource.password
+        )
 
-        KtormCustomerRepository(clock).save(customer)
+        KtormCustomerRepository(database = database, clock = clock).save(customer)
 
         val result = jdbcTemplate.queryForObject("SELECT * FROM customers WHERE id = ? LIMIT 1", customerId) { rs, _ ->
             DatabaseCustomer(

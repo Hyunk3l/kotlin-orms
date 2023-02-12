@@ -11,7 +11,7 @@ import org.ktorm.schema.datetime
 import org.ktorm.schema.uuid
 import org.ktorm.schema.varchar
 
-class KtormCustomerRepository(private val clock: Clock) : CustomerRepository {
+class KtormCustomerRepository(private val database: Database, private val clock: Clock) : CustomerRepository {
 
     object Customers : Table<Nothing>("customers") {
         val id = uuid("id").primaryKey()
@@ -21,12 +21,6 @@ class KtormCustomerRepository(private val clock: Clock) : CustomerRepository {
     }
 
     override fun save(customer: Customer) {
-        val database = Database.connect(
-            "jdbc:postgresql://localhost:5432/somedatabasename",
-            user = "postgres",
-            password = "postgres"
-        )
-
         database.insert(Customers) {
             set(it.id, customer.id.id)
             set(it.fullName, customer.fullName.fullName)

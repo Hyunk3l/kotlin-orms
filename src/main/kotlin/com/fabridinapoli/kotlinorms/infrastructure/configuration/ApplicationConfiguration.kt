@@ -3,6 +3,7 @@ package com.fabridinapoli.kotlinorms.infrastructure.configuration
 import com.fabridinapoli.kotlinorms.application.service.SignUpCustomerService
 import com.fabridinapoli.kotlinorms.domain.model.CustomerRepository
 import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate.JdbcTemplateCustomerRepository
+import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.ktorm.KtormCustomerRepository
 import java.time.Clock
 import javax.sql.DataSource
 import org.jooq.SQLDialect
@@ -11,6 +12,7 @@ import org.jooq.impl.DefaultConfiguration
 import org.jooq.impl.DefaultDSLContext
 import org.jooq.impl.DefaultExecuteListenerProvider
 import org.jooq.tools.LoggerListener
+import org.ktorm.database.Database
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -33,6 +35,9 @@ class ApplicationConfiguration {
     }
 
     @Bean
+    fun clock(): Clock = Clock.systemUTC()
+
+    @Bean
     fun dsl() = DefaultDSLContext(configuration())
 
     @Bean
@@ -40,4 +45,18 @@ class ApplicationConfiguration {
 
     @Bean
     fun signUpCustomerService(repository: CustomerRepository) = SignUpCustomerService(repository)
+
+    @Bean
+    fun ktormCustomerRepository(clock: Clock): KtormCustomerRepository {
+        val database = Database.connect(
+            url = "jdbc:postgresql://localhost:5432/somedatabasename",
+            driver = "org.postgresql.Driver",
+            user = "postgres",
+            password = "postgres"
+        )
+        return KtormCustomerRepository(
+            database = database,
+            clock = clock
+        )
+    }
 }
