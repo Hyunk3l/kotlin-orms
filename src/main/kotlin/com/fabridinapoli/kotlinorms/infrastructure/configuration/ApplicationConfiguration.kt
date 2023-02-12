@@ -5,6 +5,7 @@ import com.fabridinapoli.kotlinorms.domain.model.CustomerRepository
 import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.postgres.PostgresCustomerRepository
 import java.time.Clock
 import javax.sql.DataSource
+import org.jooq.SQLDialect
 import org.jooq.impl.DataSourceConnectionProvider
 import org.jooq.impl.DefaultConfiguration
 import org.jooq.impl.DefaultDSLContext
@@ -27,6 +28,7 @@ class ApplicationConfiguration {
 
     fun configuration() = DefaultConfiguration().also {
         it.set(connectionProvider())
+        it.set(SQLDialect.POSTGRES)
         it.set(DefaultExecuteListenerProvider(LoggerListener()))
     }
 

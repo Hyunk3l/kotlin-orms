@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.jdbc.core.queryForObject
 
-private val CUSTOMER_ID = UUID.randomUUID()
+private val customerId = UUID.randomUUID()
 
 @Tag("integration")
 internal class PostgresCustomerRepositoryShould {
@@ -30,14 +30,14 @@ internal class PostgresCustomerRepositoryShould {
         val instant = Instant.now().truncatedTo(ChronoUnit.MILLIS)
         val clock = Clock.fixed(instant, ZoneId.systemDefault())
         val customer = Customer(
-            CustomerId(CUSTOMER_ID),
+            CustomerId(customerId),
             FullName("Fabrizio Di Napoli"),
             Email("some.email@example.org")
         )
 
         PostgresCustomerRepository(jdbcTemplate, clock).save(customer)
 
-        val result = jdbcTemplate.queryForObject("SELECT * FROM customers WHERE id = ? LIMIT 1", CUSTOMER_ID) { rs, _ ->
+        val result = jdbcTemplate.queryForObject("SELECT * FROM customers WHERE id = ? LIMIT 1", customerId) { rs, _ ->
             DatabaseCustomer(
                 id = UUID.fromString(rs.getString("id")),
                 fullName = rs.getString("full_name"),

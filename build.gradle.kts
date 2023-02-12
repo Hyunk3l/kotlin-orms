@@ -103,6 +103,14 @@ tasks {
     }
 }
 
+sourceSets {
+    main {
+        kotlin {
+            srcDirs("src/main/java/generated", "src/main/kotlin")
+        }
+    }
+}
+
 // Set the following system properties to enable JOOQ to connect to the DB
 // -Djooq.codegen.jdbc.user
 // -Djooq.codegen.jdbc.password
@@ -123,8 +131,8 @@ tasks.create("generate") {
                     .withGenerate(Generate())
                     .withTarget(
                         Target()
-                            .withPackageName("com.fabridinapoli.kotlinorms")
-                            .withDirectory("${projectDir}/src/main/java/generated/jooq")
+                            .withPackageName("jooq.com.fabridinapoli.kotlinorms")
+                            .withDirectory("${projectDir}/src/main/java")
                     )
             )
     )
