@@ -4,8 +4,8 @@ import com.fabridinapoli.kotlinorms.domain.model.Customer
 import com.fabridinapoli.kotlinorms.domain.model.CustomerId
 import com.fabridinapoli.kotlinorms.domain.model.Email
 import com.fabridinapoli.kotlinorms.domain.model.FullName
-import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.postgres.DatabaseContainer
-import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.postgres.DatabaseCustomer
+import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate.DatabaseContainer
+import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate.DatabaseCustomer
 import io.kotest.matchers.shouldBe
 import java.time.Clock
 import java.time.Instant

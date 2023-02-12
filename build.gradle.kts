@@ -118,8 +118,8 @@ tasks.register("generateJooqSources") {
                 Jdbc()
                     .withDriver("org.postgresql.Driver")
                     .withUrl("jdbc:postgresql://localhost:5432/somedatabasename")
-                    .withUser("postgres")
-                    .withPassword("postgres")
+                    .withUser("jdbctemplate")
+                    .withPassword("jdbctemplate")
             )
             .withGenerator(
                 Generator()

@@ -1,4 +1,4 @@
-package com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.postgres
+package com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate
 
 import com.fabridinapoli.kotlinorms.domain.model.Customer
 import com.fabridinapoli.kotlinorms.domain.model.CustomerRepository
@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 import java.util.UUID
 import org.springframework.jdbc.core.JdbcTemplate
 
-class PostgresCustomerRepository(
+class JdbcTemplateCustomerRepository(
     private val jdbcTemplate: JdbcTemplate,
     private val clock: Clock
 ) : CustomerRepository {

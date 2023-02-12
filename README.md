@@ -1,4 +1,4 @@
-# kotlin-orms
+# Kotlin ORMs
 
 
 ## Jooq

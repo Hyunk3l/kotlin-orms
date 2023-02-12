@@ -2,7 +2,7 @@ package com.fabridinapoli.kotlinorms.infrastructure.configuration
 
 import com.fabridinapoli.kotlinorms.application.service.SignUpCustomerService
 import com.fabridinapoli.kotlinorms.domain.model.CustomerRepository
-import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.postgres.PostgresCustomerRepository
+import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate.JdbcTemplateCustomerRepository
 import java.time.Clock
 import javax.sql.DataSource
 import org.jooq.SQLDialect
@@ -36,7 +36,7 @@ class ApplicationConfiguration {
     fun dsl() = DefaultDSLContext(configuration())
 
     @Bean
-    fun customerRepository(jdbcTemplate: JdbcTemplate) = PostgresCustomerRepository(jdbcTemplate, Clock.systemUTC())
+    fun customerRepository(jdbcTemplate: JdbcTemplate) = JdbcTemplateCustomerRepository(jdbcTemplate, Clock.systemUTC())
 
     @Bean
     fun signUpCustomerService(repository: CustomerRepository) = SignUpCustomerService(repository)

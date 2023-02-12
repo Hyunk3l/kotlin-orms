@@ -1,4 +1,4 @@
-package com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.postgres
+package com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate
 
 import com.fabridinapoli.kotlinorms.domain.model.Customer
 import com.fabridinapoli.kotlinorms.domain.model.CustomerId
@@ -19,7 +19,7 @@ import org.springframework.jdbc.core.queryForObject
 private val customerId = UUID.randomUUID()
 
 @Tag("integration")
-internal class PostgresCustomerRepositoryShould {
+internal class JdbcTemplateCustomerRepositoryShould {
 
     private val databaseContainer = DatabaseContainer()
 
@@ -35,7 +35,7 @@ internal class PostgresCustomerRepositoryShould {
             Email("some.email@example.org")
         )
 
-        PostgresCustomerRepository(jdbcTemplate, clock).save(customer)
+        JdbcTemplateCustomerRepository(jdbcTemplate, clock).save(customer)
 
         val result = jdbcTemplate.queryForObject("SELECT * FROM customers WHERE id = ? LIMIT 1", customerId) { rs, _ ->
             DatabaseCustomer(

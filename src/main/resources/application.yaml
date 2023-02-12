@@ -8,8 +8,8 @@ spring:
     banner-mode: off
   datasource:
     url: jdbc:postgresql://localhost:5432/somedatabasename
-    username: postgres
-    password: postgres
+    username: jdbctemplate
+    password: jdbctemplate
     driverClassName: org.postgresql.Driver
     hikari:
       connectionTimeout: 30000

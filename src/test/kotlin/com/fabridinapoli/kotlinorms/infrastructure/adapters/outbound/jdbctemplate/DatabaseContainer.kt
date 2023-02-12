@@ -1,4 +1,4 @@
-package com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.postgres
+package com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -9,10 +9,10 @@ import org.testcontainers.utility.DockerImageName
 
 class DatabaseContainer {
 
-    val postgresContainer: PostgreSQLContainer<*> = PostgreSQLContainer(DockerImageName.parse("postgres:15.1"))
+    val postgresContainer: PostgreSQLContainer<*> = PostgreSQLContainer(DockerImageName.parse("jdbctemplate:15.1"))
         .withDatabaseName("somedatabasename")
-        .withUsername("postgres")
-        .withPassword("postgres")
+        .withUsername("jdbctemplate")
+        .withPassword("jdbctemplate")
         .also{ it.start() }
 
     val dataSource = HikariConfig()
