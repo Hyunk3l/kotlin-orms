@@ -1,7 +1,7 @@
 package com.fabridinapoli.kotlinorms.componenttest
 
 import com.fabridinapoli.kotlinorms.Application
-import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate.DatabaseContainer
+import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.DatabaseContainer
 import org.junit.jupiter.api.Tag
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.server.LocalServerPort

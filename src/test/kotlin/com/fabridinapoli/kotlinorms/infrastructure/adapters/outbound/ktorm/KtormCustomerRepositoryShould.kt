@@ -1,10 +1,11 @@
-package com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate
+package com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.ktorm
 
 import com.fabridinapoli.kotlinorms.domain.model.Customer
 import com.fabridinapoli.kotlinorms.domain.model.CustomerId
 import com.fabridinapoli.kotlinorms.domain.model.Email
 import com.fabridinapoli.kotlinorms.domain.model.FullName
 import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.DatabaseContainer
+import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate.DatabaseCustomer
 import io.kotest.matchers.shouldBe
 import java.time.Clock
 import java.time.Instant
@@ -20,7 +21,7 @@ import org.springframework.jdbc.core.queryForObject
 private val customerId = UUID.randomUUID()
 
 @Tag("integration")
-internal class JdbcTemplateCustomerRepositoryShould {
+class KtormCustomerRepositoryShould {
 
     private val databaseContainer = DatabaseContainer()
 
@@ -36,7 +37,7 @@ internal class JdbcTemplateCustomerRepositoryShould {
             Email("some.email@example.org")
         )
 
-        JdbcTemplateCustomerRepository(jdbcTemplate, clock).save(customer)
+        KtormCustomerRepository(clock).save(customer)
 
         val result = jdbcTemplate.queryForObject("SELECT * FROM customers WHERE id = ? LIMIT 1", customerId) { rs, _ ->
             DatabaseCustomer(
