@@ -111,11 +111,7 @@ sourceSets {
     }
 }
 
-// Set the following system properties to enable JOOQ to connect to the DB
-// -Djooq.codegen.jdbc.user
-// -Djooq.codegen.jdbc.password
-//
-tasks.create("generate") {
+tasks.register("generateJooqSources") {
     GenerationTool.generate(
         Configuration()
             .withJdbc(
