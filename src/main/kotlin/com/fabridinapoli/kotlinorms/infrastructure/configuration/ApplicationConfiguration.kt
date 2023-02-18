@@ -1,7 +1,6 @@
 package com.fabridinapoli.kotlinorms.infrastructure.configuration
 
 import com.fabridinapoli.kotlinorms.application.service.SignUpCustomerService
-import com.fabridinapoli.kotlinorms.domain.model.CustomerRepository
 import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.jdbctemplate.JdbcTemplateCustomerRepository
 import com.fabridinapoli.kotlinorms.infrastructure.adapters.outbound.ktorm.KtormCustomerRepository
 import java.time.Clock
@@ -41,12 +40,6 @@ class ApplicationConfiguration {
     fun dsl() = DefaultDSLContext(configuration())
 
     @Bean
-    fun customerRepository(jdbcTemplate: JdbcTemplate) = JdbcTemplateCustomerRepository(jdbcTemplate, Clock.systemUTC())
-
-    @Bean
-    fun signUpCustomerService(repository: CustomerRepository) = SignUpCustomerService(repository)
-
-    @Bean
     fun ktormCustomerRepository(clock: Clock): KtormCustomerRepository {
         val database = Database.connect(
             url = "jdbc:postgresql://localhost:5432/somedatabasename",
@@ -59,4 +52,10 @@ class ApplicationConfiguration {
             clock = clock
         )
     }
+
+    @Bean
+    fun customerRepository(jdbcTemplate: JdbcTemplate) = JdbcTemplateCustomerRepository(jdbcTemplate, Clock.systemUTC())
+
+    @Bean
+    fun signUpCustomerService(customerRepository: JdbcTemplateCustomerRepository) = SignUpCustomerService(customerRepository)
 }
