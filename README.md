@@ -12,4 +12,6 @@ docker-compose up -d
 
 ## Ktorm
 
-https://www.ktorm.org/en/connect-to-databases.html
+Basic connection with the database: https://www.ktorm.org/en/connect-to-databases.html
+
+Spring support: https://www.ktorm.org/en/spring-support.html#Create-Database-Objects
