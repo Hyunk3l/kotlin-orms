@@ -41,12 +41,7 @@ class ApplicationConfiguration {
 
     @Bean
     fun ktormCustomerRepository(clock: Clock): KtormCustomerRepository {
-        val database = Database.connect(
-            url = "jdbc:postgresql://localhost:5432/somedatabasename",
-            driver = "org.postgresql.Driver",
-            user = "postgres",
-            password = "postgres"
-        )
+        val database = Database.connectWithSpringSupport(dataSource = dataSource)
         return KtormCustomerRepository(
             database = database,
             clock = clock
@@ -57,5 +52,6 @@ class ApplicationConfiguration {
     fun customerRepository(jdbcTemplate: JdbcTemplate) = JdbcTemplateCustomerRepository(jdbcTemplate, Clock.systemUTC())
 
     @Bean
-    fun signUpCustomerService(customerRepository: JdbcTemplateCustomerRepository) = SignUpCustomerService(customerRepository)
+    fun signUpCustomerService(customerRepository: JdbcTemplateCustomerRepository) =
+        SignUpCustomerService(customerRepository)
 }
