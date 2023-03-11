@@ -14,32 +14,12 @@ permissions:
   pull-requests: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Run build
-        run: ./gradlew build
 
   dependabot:
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
-    needs: [ build ]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Get Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
 
       - name: Approve a PR
         run: gh pr review --approve "$PR_URL"
@@ -47,17 +27,8 @@ jobs:
           PR_URL: ${{github.event.pull_request.html_url}}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-      - name: Current branch
-        run: echo ${git branch --show-current}
+      - name: Merge PR
+        run: gh pr merge --admin -s "$PR_URL"
         env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: PR number
-        run: echo $(gh pr list | grep $(git branch --show-current))
-        env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
-      - name: Auto-merge Dependabot PRs
-        run: 'PR_NUM="$(gh pr list | grep $(git branch --show-current) | cut -f1)"; gh pr merge --auto --squash $PR_NUM'
-        env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
