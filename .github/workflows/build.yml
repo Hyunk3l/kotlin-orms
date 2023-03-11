@@ -25,15 +25,10 @@ jobs:
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
 
-      - name: Debug Auto-merge Dependabot PRs
-        run: |
-          echo list of prs = ${{ gh pr list }}
-          echo github.event.number = ${{ github.event.number  }}
-          echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
-          echo github.event.issue.number = ${{ github.event.issue.number }}
-          'PR_NUM="$(gh pr list | grep $(git branch --show-current) | cut -f1)";'
+      - name: Debug list pr
+        run: gh pr list
         env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - uses: actions/setup-java@v3
         with:
