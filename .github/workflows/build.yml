@@ -19,7 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Auto-merge Dependabot PRs
+      - name: Debug get Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v1
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Debug Auto-merge Dependabot PRs
         run: |
           echo list of prs = ${{ gh pr list }}
           echo github.event.number = ${{ github.event.number  }}
