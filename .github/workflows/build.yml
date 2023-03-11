@@ -49,9 +49,11 @@ jobs:
 
       - name: Auto-merge Dependabot PRs
         run: |
+          echo list of prs = ${{ gh pr list }}
           echo github.event.number = ${{ github.event.number  }}
           echo github.event.pull_request.number = ${{ github.event.pull_request.number }}
           echo github.event.issue.number = ${{ github.event.issue.number }}
-          'PR_NUM="$(gh pr list | grep $(git branch --show-current) | cut -f1)"; gh pr merge --auto --squash $PR_NUM'
+          PR_NUM="$(gh pr list | grep $(git branch --show-current) | cut -f1)";
+          gh pr merge --auto --squash $PR_NUM
         env:
           GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
