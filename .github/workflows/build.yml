@@ -19,17 +19,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Debug get Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v1
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: Debug list pr
-        run: gh pr list
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
