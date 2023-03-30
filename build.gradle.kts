@@ -10,7 +10,7 @@ plugins {
     id("io.spring.dependency-management") version "1.1.0"
     id("io.gitlab.arturbosch.detekt") version "1.22.0"
     kotlin("jvm") version "1.8.20"
-    kotlin("plugin.spring") version "1.8.10"
+    kotlin("plugin.spring") version "1.8.20"
 }
 
 buildscript {
