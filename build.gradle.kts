@@ -42,7 +42,7 @@ dependencies {
     implementation("io.arrow-kt:arrow-core:1.2.0")
     implementation("com.zaxxer:HikariCP:5.0.1")
     implementation("org.postgresql:postgresql:42.6.0")
-    implementation("org.flywaydb:flyway-core:9.21.1")
+    implementation("org.flywaydb:flyway-core:9.21.2")
     implementation(platform("org.apache.logging.log4j:log4j-bom:2.20.0"))
     implementation("org.springframework.boot:spring-boot-starter-jooq")
     implementation("org.ktorm:ktorm-core:3.6.0")
