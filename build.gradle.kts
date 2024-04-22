@@ -39,7 +39,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.23")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.23")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.8.0")
-    implementation("io.arrow-kt:arrow-core:1.2.3")
+    implementation("io.arrow-kt:arrow-core:1.2.4")
     implementation("com.zaxxer:HikariCP:5.1.0")
     implementation("org.postgresql:postgresql:42.7.3")
     implementation("org.flywaydb:flyway-core:9.22.3")
