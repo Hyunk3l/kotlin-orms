@@ -45,7 +45,7 @@ dependencies {
     implementation("org.flywaydb:flyway-core:9.22.3")
     implementation(platform("org.apache.logging.log4j:log4j-bom:2.23.1"))
     implementation("org.springframework.boot:spring-boot-starter-jooq")
-    implementation("org.ktorm:ktorm-core:3.6.0")
+    implementation("org.ktorm:ktorm-core:4.0.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(module = "mockito-core")
