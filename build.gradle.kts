@@ -19,7 +19,7 @@ buildscript {
     }
     dependencies {
         classpath("org.jooq:jooq-codegen:3.19.11")
-        classpath("org.postgresql:postgresql:42.7.3")
+        classpath("org.postgresql:postgresql:42.7.4")
     }
 }
 
@@ -41,7 +41,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:1.8.1")
     implementation("io.arrow-kt:arrow-core:1.2.4")
     implementation("com.zaxxer:HikariCP:5.1.0")
-    implementation("org.postgresql:postgresql:42.7.3")
+    implementation("org.postgresql:postgresql:42.7.4")
     implementation("org.flywaydb:flyway-core:9.22.3")
     implementation(platform("org.apache.logging.log4j:log4j-bom:2.23.1"))
     implementation("org.springframework.boot:spring-boot-starter-jooq")
