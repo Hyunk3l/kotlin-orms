@@ -43,7 +43,7 @@ dependencies {
     implementation("com.zaxxer:HikariCP:6.0.0")
     implementation("org.postgresql:postgresql:42.7.4")
     implementation("org.flywaydb:flyway-core:9.22.3")
-    implementation(platform("org.apache.logging.log4j:log4j-bom:2.24.0"))
+    implementation(platform("org.apache.logging.log4j:log4j-bom:2.24.1"))
     implementation("org.springframework.boot:spring-boot-starter-jooq")
     implementation("org.ktorm:ktorm-core:4.1.1")
 
