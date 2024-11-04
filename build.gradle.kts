@@ -18,7 +18,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.jooq:jooq-codegen:3.19.14")
+        classpath("org.jooq:jooq-codegen:3.19.15")
         classpath("org.postgresql:postgresql:42.7.4")
     }
 }
